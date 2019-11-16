@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'trocar-senha', loadChildren: './trocar-senha/trocar-senha.module#TrocarSenhaPageModule' },
   { path: 'tabs-controller', loadChildren: './tabs-controller/tabs-controller.module#TabsControllerModule' },
+  { path: 'pedidos-abertos', loadChildren: './pedidos/pedidos-abertos/pedidos-abertos.module#PedidosAbertosPageModule' },
 
   /* Paths Chamados*/
    { path: 'chamados-list', loadChildren: () => import ('./chamados/chamados-list/chamados-list.module').then(m =>ChamadosListPageModule) },

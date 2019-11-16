@@ -26,4 +26,12 @@ export class HomePage {
   logout() {
     this.loginService.logout();
   }
+
+  public openHomePage() {
+    this.router.navigate(['/home']);
+  }
+
+  public openPedidosAbertoPage() {
+    this.router.navigate(['/pedidos-abertos']);
+  }
 }

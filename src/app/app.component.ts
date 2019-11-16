@@ -31,7 +31,12 @@ export class AppComponent implements OnInit {
       title: 'Trocar Senha',
       url: '/trocar-senha',
       icon: 'key'
-    }
+    },
+    {
+      title: 'Pedidos em Aberto',
+      url: '/pedidos-abertos',
+      icon: 'list'
+    },
   ];
 
   constValue = {
@@ -83,7 +88,7 @@ export class AppComponent implements OnInit {
   }
 
   public openPedidosAbertoPage() {
-    this.router.navigate(['/trocar-senha']);
+    this.router.navigate(['/pedidos-abertos']);
   }
   
   async presentAlertConfirm() {
