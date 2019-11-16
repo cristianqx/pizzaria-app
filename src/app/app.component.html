@@ -1,0 +1,59 @@
+<div *ngIf="showSplash" class="splash">
+    <ion-spinner name="lines" style="width: 150px; height: 150px; color: white;"></ion-spinner><br/>
+</div>
+
+
+   
+  <!--  PARA FUNCIONAR É NECESSÁRIO DE DUAS IMAGENS NESSAS CONDIÇÕES:
+  /resources/icon.png - pelo menos 1024x1024px
+  /resources/splash.png - pelo menos 2732 × 2732px 
+-->
+   
+
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu  contentId="main-content" type="overlay">
+      <ion-header class="menu">
+        <ion-toolbar color="tertiary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-button expand="full" color="tertiary" (click)="abrirPortal()"><a href="http://192.168.43.184:8080">Portal Web<ion-icon slot="end" name="globe"></ion-icon></a></ion-button>
+        <ion-button expand="full" color="tertiary" (click)="presentAlertConfirm()">Sair</ion-button>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
+
+
+<ion-tabs *ngIf="statusLogado == true">
+    <ion-tab-bar slot="bottom" color="light">
+      <ion-tab-button tab="tab1" (click)="openPedidosAbertoPage()">
+        <ion-icon name="home"></ion-icon>
+        <ion-label >Home</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="tab2">
+        <ion-icon name="person" ></ion-icon>
+        <ion-label>Meu Perfil</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="tab3" (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+        <ion-label>Sair</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  
+  </ion-tabs>

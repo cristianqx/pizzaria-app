@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/chamados-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes Chamado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label><span class="bolder">Id Chamado: </span><span class="bolder">Id Chamado:</span> {{chamado.idChamado}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Nome Fantasia: </span>{{chamado.idEmpresa}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Analista: </span>{{chamado.idAnalista}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Usuário: </span>{{chamado.idUsuario}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Data Abertura: </span>{{chamado.dataAbertura}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Hora Abertura: </span>{{chamado.horaAbertura}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Data Fechamento: </span>{{chamado.dataFechamento}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Hora Fechamento: </span>{{chamado.horaFechamento}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Tempo Chamado: </span>{{chamado.tempoChamado}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Status: </span>{{chamado.codigoStatusChamado}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Tipo Chamado: </span>{{chamado.tipoChamado}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Subtipo Chamado: </span>{{chamado.subtipoChamado}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Descrição: </span>{{chamado.descricaoChamado}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="bolder">Solução: </span>{{chamado.solucaoChamado}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

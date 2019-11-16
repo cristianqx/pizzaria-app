@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Trocar Senha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="login">
+  <form [formGroup]="trocarSenhaForm">
+    <ion-label>Senha Atual</ion-label>
+    <div class="spacer" style="height:7px;" id="cameraTabDefaultPage-spacer1"></div>
+    <ion-input  clearInput type="password" placeholder="Senha Atual" formControlName="atual"></ion-input>
+    <div class="spacer" style="height:7px;" id="cameraTabDefaultPage-spacer1"></div>
+    <ion-label>Nova Senha</ion-label>
+    <div class="spacer" style="height:7px;" id="cameraTabDefaultPage-spacer1"></div>
+    <ion-input  clearInput type="password" placeholder="Nova Senha" formControlName="nova"></ion-input>
+    <div class="spacer" style="height:7px;" id="cameraTabDefaultPage-spacer1"></div>
+    <ion-label>Confirme a Senha</ion-label>
+    <div class="spacer" style="height:7px;" id="cameraTabDefaultPage-spacer1"></div>
+    <ion-input  clearInput type="password" placeholder="Confirme Senha" formControlName="confirme"></ion-input>
+    <div class="spacer" style="height:7px;" id="cameraTabDefaultPage-spacer1"></div>
+  </form>
+
+  <ion-button expand="block" color="tertiary" (click)="trocarSenha()" [disabled]="constValue.button">Trocar Senha</ion-button>
+</div>
+
+</ion-content>

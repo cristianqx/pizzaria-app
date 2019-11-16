@@ -1,0 +1,7 @@
+{
+  "name": "PizzariaApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

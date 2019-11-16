@@ -1,0 +1,35 @@
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+ion-icon {
+  font-size: 5em;
+}
+
+.pedidos-aberto-dash {
+  background-color: #00C0EF;
+}
+
+.pedidos-finalizados-dash {
+  background-color: #cc0000;
+}
+
+.pedidos-aberto-title {
+  font-size: 60px;
+  color: white;
+  position: absolute;
+  left: 6%;
+  top: 12%;
+  font-weight: bold;
+}
+
+.pedidos-aberto-subtitle {
+  font-size: 20px;
+  color: white;
+}
+
+.pedidos-aberto-icon {
+  color: white;
+
+}

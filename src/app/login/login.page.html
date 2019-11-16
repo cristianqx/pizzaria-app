@@ -1,0 +1,25 @@
+<ion-content scroll="false">
+  <div class="splash-bg"></div>
+  <div class="splash-info">
+    <div class="splash-logo"></div>
+    <div class="splash-intro">
+        Casa Nossa App - Login
+    </div>
+  </div>
+  <div padding>
+    <form [formGroup]="loginForm">
+        <ion-item>
+          <ion-label style="font-weight: bold;">Login</ion-label>
+          <ion-input type="text" formControlName="login" name="login" placeholder="" autofocus
+           autocapitalize="off"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stracked style="font-weight: bold;">Senha</ion-label>
+          <ion-input type="password" formControlName="senha" name="senha" placeholder=""></ion-input>
+        </ion-item>
+       
+        <ion-button color="primary" expand="full" on-click="login()">Entrar</ion-button>
+    </form>
+    </div>
+</ion-content>
