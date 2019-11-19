@@ -9,18 +9,18 @@ import { environment } from 'src/environments/environment';
   })
   export class ListaPedidosService implements OnInit{
   
-    private relativeLink = 'pedido/listar-pedidos';
+    private relativeLink = 'pedido';
 
     constructor(
         private http: HttpClient
       ) { }
 
       ngOnInit() {
-          this.getListaPedidos();
-      }
-      public getListaPedidos() {
-        return this.http.get(`${environment.url.apirest}/${this.relativeLink}`).subscribe(data => {
-            console.log(JSON.stringify(data));
-        });
-      }
+    }
+
+    public listarPedidosById(idStatusPedido : number) : Observable<any> {
+      return this.http.get(`${environment.url.apirest}/${this.relativeLink}/lista-pedidos-status/${idStatusPedido}`); 
+  }
+
+    
   }

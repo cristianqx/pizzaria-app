@@ -1,37 +1,15 @@
 <ion-content fullscreen>
-    <ion-list>
       <ion-list-header>
         Pedidos em Aberto
       </ion-list-header>
 
-      <ion-item>
-        <ion-avatar slot="start">
-            <img src="../../../assets/pizza.jpg">
-          </ion-avatar>
-        <ion-label>
-          <h2>Pizza de Camarão</h2>
-          <h3>Sem cebola</h3>
-        </ion-label>
-      </ion-item>
-
-      <ion-item>
-          <ion-avatar slot="start">
-              <img src="../../../assets/pizza.jpg">
-          </ion-avatar>
-        <ion-label>
-            <h2>Pizza de Camarão</h2>
-            <h3>Sem cebola</h3>
-        </ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-avatar slot="start">
-            <img src="../../../assets/pizza.jpg">
-          </ion-avatar>
-        <ion-label>
-            <h2>Pizza de Camarão</h2>
-            <h3>Sem cebola</h3>
-        </ion-label>
-      </ion-item>
+  <ion-content padding>
+    <ion-list *ngFor="let pedido of pedidos | async">
+        <ion-item no-padding>
+            <label style="font-weight: bold;">Nº Ped:</label>
+            <label> &nbsp;{{pedido.id}} &nbsp;&nbsp;&nbsp;</label>
+            <label style="font-weight: bold;">Descrição:</label>
+            <label>&nbsp; {{pedido.produto.nomeProduto}}</label>
+        </ion-item>
     </ion-list>
-  </ion-content>
+</ion-content>
