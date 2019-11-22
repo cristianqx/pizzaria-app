@@ -16,33 +16,9 @@ import { timer } from 'rxjs';
 export class AppComponent implements OnInit {
 
   public statusLogado;
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'Chamados',
-      url: '/chamados-list',
-      icon: 'list'
-    },
-    {
-      title: 'Trocar Senha',
-      url: '/trocar-senha',
-      icon: 'key'
-    },
-    {
-      title: 'Pedidos em Aberto',
-      url: '/pedidos-abertos',
-      icon: 'list'
-    },
-  ];
-
   constValue = {
     menu: <boolean>null,
   }
-
   showSplash = true;
 
 
@@ -58,16 +34,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-   /* this.loginService.getIsLogged$.subscribe((data) => {
-      if (data) {
-        this.router.navigate(['/home']);
-        this.constValue.menu = true;
-      } else {
-        this.router.navigate['/login'];
-        this.constValue.menu = false;
-      }
-    })*/
   }
 
   initializeApp() {

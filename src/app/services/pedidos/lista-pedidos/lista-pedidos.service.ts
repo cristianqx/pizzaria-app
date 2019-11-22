@@ -22,5 +22,11 @@ import { environment } from 'src/environments/environment';
       return this.http.get(`${environment.url.apirest}/${this.relativeLink}/lista-pedidos-status/${idStatusPedido}`); 
   }
 
+    public listarPedidosPorId(idStatusPedido : number) : Observable<any> {
+      return this.http.get(`${environment.url.apirest}/${this.relativeLink}/get/${idStatusPedido}`); 
+}
+
+
+
     
   }

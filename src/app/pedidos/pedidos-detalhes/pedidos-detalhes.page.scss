@@ -1,0 +1,16 @@
+ion-thumbnail {
+  opacity: 1 !important;
+
+
+  img {
+    border-radius: 80% !important;
+    height: 90px  !important;
+    width: 90px !important;
+    display: block;
+    position: absolute; 
+    top: 15px; 
+    left: 8px; 
+    margin: 1 auto;
+  }
+
+}

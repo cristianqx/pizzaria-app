@@ -62,4 +62,8 @@ export class HomePage implements OnInit{
   public openPedidosAbertoPage() {
     this.router.navigate(['/pedidos-abertos']);
   }
+
+  public openPedidosFinalizadosPage() {
+    this.router.navigate(['/pedidos-finalizados']);
+  }
 }

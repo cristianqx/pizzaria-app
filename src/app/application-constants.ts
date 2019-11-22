@@ -16,7 +16,7 @@ export const SITE_EMPRESA = 'http://pizzaria.com.br';
 //==========================================================
 
 /** Nome do sistema para a empresa */
-export const NOME_SISTEMA = 'Portal Web ';
+export const NOME_SISTEMA = 'App';
 
 /** Versao do sistema */
 export const VERSAO = '1.0.0';

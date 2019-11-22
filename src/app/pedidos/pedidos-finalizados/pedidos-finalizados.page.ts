@@ -9,11 +9,11 @@ import { ListaPedidosService } from 'src/app/services/pedidos/lista-pedidos/list
 import { PedidoResource } from 'src/app/model/pedido-resource';
 
 @Component({
-  selector: 'app-pedidos-abertos',
-  templateUrl: 'pedidos-abertos.page.html',
-  styleUrls: ['pedidos-abertos.page.scss'],
+  selector: 'app-pedidos-finalizados',
+  templateUrl: 'pedidos-finalizados.page.html',
+  styleUrls: ['pedidos-finalizados.page.scss'],
 })
-export class PedidosAbertosPage implements OnInit{
+export class PedidosFinalizadosPage implements OnInit{
   ImageArray: any = [];
   private relativeLink = 'pedido';
   pedidos : Observable<PedidoResource[]>
@@ -30,7 +30,9 @@ export class PedidosAbertosPage implements OnInit{
   }
 
   ngOnInit() {
-    this.obterPedidos(1);
+    this.obterPedidos(3);
+
+    console.log(JSON.stringify(this.pedidos));
   }
 
   obterPedidos(idTipoPedido) {
@@ -38,7 +40,7 @@ export class PedidosAbertosPage implements OnInit{
   }
 
   visualizarPedido(idPedido : number) {
-    this.router.navigate(['pedidos-detalhe'], { queryParams: { idPedido: idPedido } });
+    this.router.navigate(['proxPage'], { queryParams: { idPedido: idPedido } });
     return false;
   }
 

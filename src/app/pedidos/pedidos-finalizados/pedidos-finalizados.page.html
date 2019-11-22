@@ -1,11 +1,11 @@
 <ion-content fullscreen>
       <ion-list-header>
-        Pedidos em Aberto
+        Pedidos Finalizados
       </ion-list-header>
 
   <ion-content padding>
     <ion-list *ngFor="let pedido of pedidos | async">
-        <ion-item no-padding (click)="visualizarPedido(pedido.id)">
+        <ion-item no-padding>
             <label style="font-weight: bold;">Nº Ped:</label>
             <label> &nbsp;{{pedido.id}} &nbsp;&nbsp;&nbsp;</label>
             <label style="font-weight: bold;">Descrição:</label>

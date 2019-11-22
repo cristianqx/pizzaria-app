@@ -16,7 +16,7 @@
               <h2 class="pedidos-aberto-title">{{qtdPedidosEmAberto}}</h2>
               <h3 class="pedidos-aberto-subtitle">Pedidos em Abertos</h3>
           </ion-card>
-          <ion-card text-center padding  class="pedidos-finalizados-dash">
+          <ion-card text-center padding  class="pedidos-finalizados-dash" (click)="openPedidosFinalizadosPage()">
               <ion-icon name="checkmark-circle" class="pedidos-aberto-icon"></ion-icon>
               <h2 class="pedidos-aberto-title">{{qtdPedidosFinalizados}}</h2>
               <h3 class="pedidos-aberto-subtitle">Pedidos Finalizados</h3>

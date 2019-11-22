@@ -1,0 +1,51 @@
+<ion-content fullscreen>
+  <ion-list-header>
+    Detalhes do Pedido
+  </ion-list-header>
+
+<button (click)="retornar()">
+  <ion-icon name="arrow-back" style="width: 25px; height: 25px;"></ion-icon>
+</button>
+<ion-content no-padding>
+
+<ion-card>
+<ion-list margin-top>
+  <ion-item ion-item detail-none>
+    <div item-left class="green" style="height: 32px !important">
+    </div>
+    <p no-margin style="padding:5px;">ID Pedido</p>
+    <ion-badge color="primary" no-margin margin-right item-end>28</ion-badge>
+  </ion-item>
+  <ion-item ion-item detail-none>
+    <div item-left class="yellow" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Produto</p>
+    <ion-badge color="primary" no-margin margin-right item-end>Pizza de Calabresa</ion-badge>
+  </ion-item>
+  <ion-item ion-item detail-none>
+    <div item-left class="red" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Quantidade</p>
+    <ion-badge color="primary" no-margin margin-right item-end>3</ion-badge>
+  </ion-item> 
+  <ion-item ion-item detail-none>
+    <div item-left class="red" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Tamanho</p>
+    <ion-badge color="primary" no-margin margin-right item-end>Inteira</ion-badge>
+  </ion-item> 
+  <ion-item ion-item detail-none>
+    <div item-left class="red" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Data de Ínicio</p>
+    <ion-badge color="primary" no-margin margin-right item-end>22/10/2019 19:00</ion-badge>
+  </ion-item>
+  <ion-item ion-item detail-none>
+    <div item-left class="red" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Data de Fim</p>
+    <ion-badge color="danger" no-margin margin-right item-end>Ainda não finalizado</ion-badge>
+  </ion-item>
+</ion-list>
+
+<br/><br/><br/><br/><br/><br/><br/>
+<ion-button color="primary" expand="full" on-click="login()">Começar</ion-button>
+<ion-button color="danger" expand="full" on-click="login()">Finalizar</ion-button>
+
+</ion-card>
+</ion-content>

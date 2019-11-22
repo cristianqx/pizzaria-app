@@ -17,6 +17,9 @@ const routes: Routes = [
   { path: 'trocar-senha', loadChildren: './trocar-senha/trocar-senha.module#TrocarSenhaPageModule' },
   { path: 'tabs-controller', loadChildren: './tabs-controller/tabs-controller.module#TabsControllerModule' },
   { path: 'pedidos-abertos', loadChildren: './pedidos/pedidos-abertos/pedidos-abertos.module#PedidosAbertosPageModule' },
+  { path: 'pedidos-finalizados', loadChildren: './pedidos/pedidos-finalizados/pedidos-finalizados.module#PedidosFinalizadosPageModule' },
+  { path: 'pedidos-detalhes', loadChildren: './pedidos/pedidos-detalhes/pedidos-detalhes.module#PedidosDetalhesPageModule' },
+  { path: 'pedidos-detalhe', loadChildren: './pedidos/pedidos-detalhe/pedidos-detalhe.module#PedidosDetalhePageModule' },
 
   /* Paths Chamados*/
    { path: 'chamados-list', loadChildren: () => import ('./chamados/chamados-list/chamados-list.module').then(m =>ChamadosListPageModule) },

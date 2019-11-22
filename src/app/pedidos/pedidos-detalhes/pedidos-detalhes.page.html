@@ -1,0 +1,47 @@
+<ion-content fullscreen>
+  <ion-list-header>
+    Detalhes do Pedido
+  </ion-list-header>
+
+<button (click)="retornar()">
+  <ion-icon name="arrow-back" style="width: 25px; height: 25px;"></ion-icon>
+</button>
+<ion-content no-padding>
+
+<ion-card>
+<ion-list margin-top > <!--*ngFor="let pedido of pedidos | async"-->
+  <ion-item ion-item detail-none>
+    <div item-left class="green" style="height: 32px !important">
+    </div>
+    <p no-margin style="padding:5px;">ID</p>
+    <ion-badge color="light" no-margin margin-right item-end>pedido.id</ion-badge>
+  </ion-item>
+  <ion-item ion-item detail-none>
+    <div item-left class="yellow" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Produto</p>
+    <ion-badge color="light" no-margin margin-right item-end>pedido.produto.nomeProduto</ion-badge>
+  </ion-item>
+  <ion-item ion-item detail-none>
+    <div item-left class="red" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Evacuação Difícil</p>
+    <ion-badge color="light" no-margin margin-right item-end>sdsad</ion-badge>
+  </ion-item>
+  <ion-item ion-item detail-none>
+    <div item-left class="red" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Evacuação Normal</p>
+    <ion-badge color="light" no-margin margin-right item-end>sdsad</ion-badge>
+  </ion-item>
+  <ion-item ion-item detail-none>
+    <div item-left class="red" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Evacuação Mole</p>
+    <ion-badge color="light" no-margin margin-right item-end>sdsad</ion-badge>
+  </ion-item>
+  <ion-item ion-item detail-none>
+    <div item-left class="red" style="height: 32px !important"></div>
+    <p no-margin style="padding:5px;">Banho</p>
+    <ion-badge color="light" no-margin margin-right item-end>sdsad
+    </ion-badge>
+  </ion-item>
+</ion-list>
+</ion-card>
+</ion-content>

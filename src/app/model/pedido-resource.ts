@@ -24,7 +24,5 @@ import { UsuarioResource } from "./usuario-resource";
          this.produto = new ProdutoResource();
          this.tipoStatus = new TipoStatusPedido();
          this.usuario = new UsuarioResource();
-
-
      }
  }
