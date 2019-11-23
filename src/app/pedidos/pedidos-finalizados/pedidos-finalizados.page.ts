@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ListaPedidosService } from 'src/app/services/pedidos/lista-pedidos/lista-pedidos.service';
 import { PedidoResource } from 'src/app/model/pedido-resource';
+import { LoginService } from 'src/app/services/authentication/login/login.service';
 
 @Component({
   selector: 'app-pedidos-finalizados',
@@ -17,11 +18,14 @@ export class PedidosFinalizadosPage implements OnInit{
   ImageArray: any = [];
   private relativeLink = 'pedido';
   pedidos : Observable<PedidoResource[]>
+  isSubmited: boolean;
+  loading: boolean;
 
   constructor(public navCtrl: NavController,
               private router : Router,
               private appComponent : AppComponent,
               private http: HttpClient,
+              private loginService : LoginService,
               private listaPedidos : ListaPedidosService) {
 
     this.appComponent.statusLogado = true;
@@ -40,8 +44,32 @@ export class PedidosFinalizadosPage implements OnInit{
   }
 
   visualizarPedido(idPedido : number) {
-    this.router.navigate(['proxPage'], { queryParams: { idPedido: idPedido } });
-    return false;
+    this.isSubmited = true;
+    this.loading = true;
+
+    setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.router.navigate(['pedidos-detalhe', {"refresh": (new Date().getTime())}], { queryParams: { idPedido: idPedido } });
+    }, 600);
+  }
+
+  retornar() {
+
+    this.isSubmited = true;
+    this.loading = true;
+     
+    setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.router.navigate(['pedidos-abertos', {"refresh": (new Date().getTime())}]);
+  
+    }, 600);
+
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 
 }

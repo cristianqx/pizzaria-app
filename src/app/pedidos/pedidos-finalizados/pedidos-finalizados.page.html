@@ -5,7 +5,7 @@
 
   <ion-content padding>
     <ion-list *ngFor="let pedido of pedidos | async">
-        <ion-item no-padding>
+        <ion-item no-padding (click)="visualizarPedido(pedido.id)">
             <label style="font-weight: bold;">Nº Ped:</label>
             <label> &nbsp;{{pedido.id}} &nbsp;&nbsp;&nbsp;</label>
             <label style="font-weight: bold;">Descrição:</label>
