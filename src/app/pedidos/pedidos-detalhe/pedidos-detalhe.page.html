@@ -3,10 +3,10 @@
     Detalhes do Pedido
   </ion-list-header>
 
-<button (click)="retornar()">
-  <ion-icon name="arrow-back" style="width: 25px; height: 25px;"></ion-icon>
-</button>
-<!--<ion-content no-padding>
+  <button (click)="retornar()">
+    <ion-icon name="arrow-back" style="width: 25px; height: 25px;"></ion-icon>
+  </button>
+  <!--<ion-content no-padding>
     <form role="form" [formGroup]="pedidoForm">
 
 <ion-card>
@@ -52,49 +52,52 @@
 </ion-content>-->
 
 
-<ion-content>
+  <ion-content>
     <ion-grid no-padding>
-        <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit" novalidate>
-            <ion-row>
-                <ion-col no-padding col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
-                    <div padding>
+     
+        <ion-card>
+          <ion-list margin-top>
+             <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit" novalidate>
+            <ion-item ion-item detail-none>
+              <div item-left class="green" style="height: 32px !important">
+              </div>
+              <p no-margin style="padding:5px; font-weight: bold;">ID Pedido &nbsp;&nbsp;</p>
+              <ion-input type="text" placeholder="" formControlName="id" autofocus autocapitalize="off" disabled>
+              </ion-input>
+            </ion-item>
+            <ion-item ion-item detail-none>
+              <div item-left class="yellow" style="height: 32px !important"></div>
+              <p no-margin style="padding:5px; font-weight: bold ">Produto &nbsp;&nbsp;</p>
+              <ion-input type="text" placeholder="" formControlName="produto" autofocus autocapitalize="off" disabled>
+              </ion-input>
+            </ion-item>
+            <ion-item ion-item detail-none>
+              <div item-left class="red" style="height: 32px !important"></div>
+              <p no-margin style="padding:5px; font-weight: bold">Quantidade &nbsp;&nbsp;</p>
+              <ion-input type="text" placeholder="" formControlName="quantidade" autofocus autocapitalize="off"
+                disabled></ion-input>
+            </ion-item>
+            <ion-item ion-item detail-none>
+                <div item-left class="red" style="height: 32px !important"></div>
+                <p no-margin style="padding:5px; font-weight: bold">Observação &nbsp;&nbsp;</p>
+                <ion-input type="text" placeholder="" formControlName="observacao" autofocus autocapitalize="off" disabled></ion-input>
+              </ion-item>
+          </form>
+            <ion-item ion-item detail-none>
+                <div item-left class="red" style="height: 32px !important"></div>
+                <p no-margin style="padding:5px; font-weight: bold">Tamanho &nbsp;&nbsp;</p>
+                <ion-input type="text" placeholder="" [(ngModel)]="tamanhoPizza" autofocus autocapitalize="off" disabled></ion-input>
+            </ion-item>
+          </ion-list>
 
-                        <ion-item no-padding>
-                            <ion-label color="dark" stacked>Nome e Parentesco</ion-label>
-                            <ion-input class="form-control" type="text"  disabled formControlName="id">
-                            </ion-input>
-                        </ion-item>
 
-                        <ion-item no-padding>
-                            <ion-label color="dark" stacked>Outro Contato</ion-label>
-                            <ion-input  class="form-control"type="text"  [(ngModel)]="quantidade" disabled formControlName="quantidade"></ion-input>
-                        </ion-item>
 
-                        <ion-item no-padding>
-                            <ion-label color="dark" stacked>Outro Contato</ion-label>
-                            <ion-input class="form-control" type="text"  disabled formControlName="quantidade"></ion-input>
-                        </ion-item>
+          <br /><br /><br /><br /><br /><br /><br />
+          <ion-button color="primary" expand="full" on-click="comecarAProduzir()" [disabled]="statusPedido == 2">Começar</ion-button>
+          <ion-button color="danger" expand="full" on-click="finalizar()" [disabled]="statusPedido == 3">Finalizar</ion-button>
+        </ion-card>
 
-                        <ion-item no-padding>
-                            <ion-label color="dark" stacked>Outro Contato</ion-label>
-                            <ion-input class="form-control" type="text"  disabled formControlName="observacao"></ion-input>
-                        </ion-item>
 
-                        <ion-item no-padding>
-                            <ion-label color="dark" stacked>Outro Contato</ion-label>
-                            <ion-input class="form-control" type="text"  disabled formControlName="produto"></ion-input>
-                        </ion-item>
 
-                    </div>
-
-                    <div padding>
-                        <button default-button text-capitalize ion-button block color="#32519A" (click)="onSubmit()"
-                        [disabled]="!pedidoForm.valid">
-                            <p>Próximo</p>
-                        </button>
-                    </div>
-                </ion-col>
-            </ion-row>
-        </form>
     </ion-grid>
-</ion-content>
+  </ion-content>

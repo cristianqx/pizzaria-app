@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.model';
 import { AccountCredentials } from 'src/app/interfaces/accountCredentials.model';
 import { Login } from 'src/app/interfaces/login.model';
+import { UsuarioResource } from 'src/app/model/usuario-resource';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class LoginService {
   setIsLogged$(isLogged) {
     this.isLoggedIn$.next(isLogged);
   }
-
+  
   get getUserInformation$() {
     const user: User = JSON.parse(sessionStorage.getItem('user'));
     this.userInfo$.next(user);

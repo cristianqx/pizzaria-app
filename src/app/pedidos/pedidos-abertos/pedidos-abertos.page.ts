@@ -17,6 +17,8 @@ export class PedidosAbertosPage implements OnInit{
   ImageArray: any = [];
   private relativeLink = 'pedido';
   pedidos : Observable<PedidoResource[]>
+  pedidosAndamento : Observable<PedidoResource[]>
+
   loading: boolean;
   isSubmited: boolean;
 
@@ -33,12 +35,16 @@ export class PedidosAbertosPage implements OnInit{
 
   ngOnInit() {
     this.obterPedidos(1);
+    this.obterPedidosEmAndamento(2);
   }
 
   obterPedidos(idTipoPedido) {
     this.pedidos = this.listaPedidos.listarPedidosById(idTipoPedido);
   }
 
+  obterPedidosEmAndamento(idTipoPedido) {
+    this.pedidosAndamento = this.listaPedidos.listarPedidosById(idTipoPedido);
+  }
   visualizarPedido(idPedido : number) {
     this.isSubmited = true;
     this.loading = true;

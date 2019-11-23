@@ -10,6 +10,9 @@ import { PedidoResource } from 'src/app/model/pedido-resource';
 import { LoginService } from 'src/app/services/authentication/login/login.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProdutoResource } from 'src/app/model/produto-resource';
+import { UsuarioResource } from 'src/app/model/usuario-resource';
+import { AuthenticationService } from 'src/app/service/authentication.service';
+import { PedidoService } from 'src/app/service/pedido.service';
 
 @Component({
   selector: 'app-pedidos-detalhe',
@@ -28,6 +31,13 @@ export class PedidosDetalhePage implements OnInit{
   produto : Observable<ProdutoResource[]>;
   isSubmited: boolean;
   loading: boolean;
+  public usuarioLogado;
+  public tamanhoPizza; 
+  public usuarioRetorno;
+  public produtoRetorno;
+  public precoTotalPedido;
+  quantidadeTotalPedido: number;
+  statusPedido: any;
 
   constructor(public navCtrl: NavController,
               private router : Router,
@@ -35,9 +45,12 @@ export class PedidosDetalhePage implements OnInit{
               private http: HttpClient,
               private listaPedidos : ListaPedidosService,
               private route: ActivatedRoute,
+              private authService: AuthenticationService,
               private formBuilder : FormBuilder,
-              private loginService : LoginService) {
+              private loginService : LoginService,
+              private pedidoService : PedidoService) {
 
+    this.usuarioLogado = this.authService.currentUserValue;
     this.appComponent.statusLogado = true;
     this.ImageArray = [{ 'image': 'https://www.pizzariascuritiba.com.br/wp-content/files_mf/1401364301pizza1.jpg' },
     ]
@@ -56,18 +69,26 @@ export class PedidosDetalhePage implements OnInit{
       id:  [''],
       quantidade:  [''],
       observacao: [''],
-      produto : '',
+      produto: [''],
     });
 
     if(this.idStatusPedido != undefined) {
       this.listaPedidos.findById(this.idStatusPedido).subscribe(
         pedidoRetornado => {
 
-          console.log("Pedido retornado: "+pedidoRetornado);
+          this.produtoRetorno = pedidoRetornado.produto;
+          this.usuarioRetorno = pedidoRetornado.usuario;
+          this.quantidadeTotalPedido = pedidoRetornado.quantidade;
+          this.precoTotalPedido = pedidoRetornado.precoTotal;
+          this.statusPedido = pedidoRetornado.tipoStatus.id;
+
           this.pedidoForm.controls['id'].setValue(pedidoRetornado.id);
           this.pedidoForm.controls['quantidade'].setValue(pedidoRetornado.quantidade);
-          this.pedidoForm.controls['produto'].setValue(pedidoRetornado.produto);
+          this.pedidoForm.controls['produto'].setValue(pedidoRetornado.produto.nomeProduto);
           this.pedidoForm.controls['observacao'].setValue(pedidoRetornado.observacao);
+          this.tamanhoPizza = pedidoRetornado.produto.tipoPizza.descricao;
+          this.usuarioLogado = pedidoRetornado.usuario.nome;
+          console.log(this.produtoRetorno);
         })
     }
 
@@ -90,14 +111,62 @@ export class PedidosDetalhePage implements OnInit{
   
     }, 600);
 
+  }
 
-   
+  comecarAProduzir() {
+    this.isSubmited = true;
 
+    this.loading = true;
+
+    this.pedido.id = this.idStatusPedido;
+
+    this.pedido.tipoStatus.id = 2;
+
+    this.pedido.usuario = this.usuarioRetorno;
+
+    this.pedido.precoTotal = this.precoTotalPedido;
+
+    this.pedido.quantidade = this.quantidadeTotalPedido;
+
+    this.pedido.produto = this.produtoRetorno;
+    
+    this.pedidoService.manterPedido(this.pedido);
+
+    setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.router.navigate(['pedidos-abertos', {"refresh": (new Date().getTime())}]);
+    }, 700);
   }
   
 
+  finalizar() {
+    this.isSubmited = true;
 
+    this.loading = true;
 
+    this.pedido.id = this.idStatusPedido;
+
+    this.pedido.tipoStatus.id = 3;
+
+    this.pedido.usuario = this.usuarioRetorno;
+
+    this.pedido.precoTotal = this.precoTotalPedido;
+
+    this.pedido.quantidade = this.quantidadeTotalPedido;
+
+    this.pedido.produto = this.produtoRetorno;
+    
+    this.pedidoService.manterPedido(this.pedido);
+
+    setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.router.navigate(['pedidos-abertos', {"refresh": (new Date().getTime())}]);
+    }, 700);
+  }
+ 
+  
   /*obterPedidos(idTipoPedido) {
     this.pedidos = this.listaPedidos.listarPedidosPorId(idTipoPedido);
   }*/

@@ -1,9 +1,9 @@
-<ion-content fullscreen>
-      <ion-list-header>
-        Pedidos em Aberto
-      </ion-list-header>
+<ion-content>
+
 
   <ion-content padding>
+      <h3>Pedidos em Aberto</h3>
+      <br/>
     <ion-list *ngFor="let pedido of pedidos | async">
         <ion-item no-padding (click)="visualizarPedido(pedido.id)">
             <label style="font-weight: bold;">Nº Ped:</label>
@@ -12,4 +12,34 @@
             <label>&nbsp; {{pedido.produto.nomeProduto}}</label>
         </ion-item>
     </ion-list>
+
+<br/>
+<h3>Pedidos em Andamento</h3>
+      <br/>
+    <ion-list *ngFor="let pedido of pedidosAndamento | async">
+        <ion-item no-padding (click)="visualizarPedido(pedido.id)">
+            <label style="font-weight: bold;">Nº Ped:</label>
+            <label> &nbsp;{{pedido.id}} &nbsp;&nbsp;&nbsp;</label>
+            <label style="font-weight: bold;">Descrição:</label>
+            <label>&nbsp; {{pedido.produto.nomeProduto}}</label>
+        </ion-item>
+    </ion-list>
+
 </ion-content>
+
+
+<!--<ion-content fullscreen>
+    <ion-list-header>
+      Pedidos em Aberto
+    </ion-list-header>
+
+<ion-content padding>
+  <ion-list *ngFor="let pedidoAberto of pedidosEmAndamento | async">
+      <ion-item no-padding (click)="visualizarPedido(pedido.id)">
+          <label style="font-weight: bold;">Nº Ped:</label>
+          <label> &nbsp;{{pedidoAberto.id}} &nbsp;&nbsp;&nbsp;</label>
+          <label style="font-weight: bold;">Descrição:</label>
+          <label>&nbsp; {{pedidoAberto.produto.nomeProduto}}</label>
+      </ion-item>
+  </ion-list>
+</ion-content>-->
