@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { ListaPedidosService } from 'src/app/services/pedidos/lista-pedidos/lista-pedidos.service';
 import { PedidoResource } from 'src/app/model/pedido-resource';
 import { LoginService } from 'src/app/services/authentication/login/login.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProdutoResource } from 'src/app/model/produto-resource';
 
 @Component({
   selector: 'app-pedidos-detalhe',
@@ -18,7 +20,14 @@ export class PedidosDetalhePage implements OnInit{
   ImageArray: any = [];
   private relativeLink = 'pedido';
   public pedidos : Observable<PedidoResource[]>
+  //public pedidos:any[] = [];
   public idStatusPedido : number;
+
+  pedidoForm : FormGroup;
+  pedido: PedidoResource = new PedidoResource();
+  produto : Observable<ProdutoResource[]>;
+  isSubmited: boolean;
+  loading: boolean;
 
   constructor(public navCtrl: NavController,
               private router : Router,
@@ -26,6 +35,7 @@ export class PedidosDetalhePage implements OnInit{
               private http: HttpClient,
               private listaPedidos : ListaPedidosService,
               private route: ActivatedRoute,
+              private formBuilder : FormBuilder,
               private loginService : LoginService) {
 
     this.appComponent.statusLogado = true;
@@ -36,16 +46,61 @@ export class PedidosDetalhePage implements OnInit{
   ngOnInit() {
     this.idStatusPedido = this.route.snapshot.queryParams['idPedido'];
 
-    this.listaPedidos.listarPedidosPorId(this.idStatusPedido).subscribe(data => {
+    /*this.listaPedidos.findById(this.idStatusPedido).subscribe(data => {
+
       this.pedidos = data;
-      console.log(JSON.stringify(this.pedidos[0].id));
+
+    });*/
+
+    this.pedidoForm = this.formBuilder.group({
+      id:  [''],
+      quantidade:  [''],
+      observacao: [''],
+      produto : '',
     });
+
+    if(this.idStatusPedido != undefined) {
+      this.listaPedidos.findById(this.idStatusPedido).subscribe(
+        pedidoRetornado => {
+
+          console.log("Pedido retornado: "+pedidoRetornado);
+          this.pedidoForm.controls['id'].setValue(pedidoRetornado.id);
+          this.pedidoForm.controls['quantidade'].setValue(pedidoRetornado.quantidade);
+          this.pedidoForm.controls['produto'].setValue(pedidoRetornado.produto);
+          this.pedidoForm.controls['observacao'].setValue(pedidoRetornado.observacao);
+        })
+    }
+
+
+  }
+
+  get formControls() {
+    return this.pedidoForm.controls;
   }
 
   retornar() {
-    this.router.navigate(['pedidos-abertos']);
-    return false;
+
+    this.isSubmited = true;
+    this.loading = true;
+     
+    setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.router.navigate(['pedidos-abertos', {"refresh": (new Date().getTime())}]);
+  
+    }, 600);
+
+
+   
+
   }
+  
+
+
+
+  /*obterPedidos(idTipoPedido) {
+    this.pedidos = this.listaPedidos.listarPedidosPorId(idTipoPedido);
+  }*/
 
   visualizarPedido(idPedido : number) {
     this.router.navigate(['pedidos-detalhes'], { queryParams: { idPedido: idPedido } });

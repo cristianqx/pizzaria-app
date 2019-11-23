@@ -8,21 +8,23 @@ import { UsuarioResource } from "./usuario-resource";
  */
 
  export class PedidoResource {
-     id: number;
-     dataInicio: Date;
-     dataFim: Date;
-     valorUnitario: number;
-     quantidade: number;
-     produto : ProdutoResource;
-     precoTotal: number;
-     observacao: string;
-     tipoStatus : TipoStatusPedido;
-     usuario: UsuarioResource;
+    id: number;
+    dataInicio: Date;
+    dataFim: Date;
+    valorUnitario: number;
+    quantidade: number;
+    produto : ProdutoResource;
+    precoTotal: number;
+    observacao: string;
+    tipoStatus : TipoStatusPedido;
+    usuario: UsuarioResource;
 
 
-     constructor() {
-         this.produto = new ProdutoResource();
-         this.tipoStatus = new TipoStatusPedido();
-         this.usuario = new UsuarioResource();
-     }
+    constructor() {
+        this.produto = new ProdutoResource();
+        this.tipoStatus = new TipoStatusPedido();
+        this.usuario = new UsuarioResource();
+
+
+    }
  }

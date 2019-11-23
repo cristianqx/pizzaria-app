@@ -17,6 +17,8 @@ export class PedidosAbertosPage implements OnInit{
   ImageArray: any = [];
   private relativeLink = 'pedido';
   pedidos : Observable<PedidoResource[]>
+  loading: boolean;
+  isSubmited: boolean;
 
   constructor(public navCtrl: NavController,
               private router : Router,
@@ -38,8 +40,14 @@ export class PedidosAbertosPage implements OnInit{
   }
 
   visualizarPedido(idPedido : number) {
-    this.router.navigate(['pedidos-detalhe'], { queryParams: { idPedido: idPedido } });
-    return false;
+    this.isSubmited = true;
+    this.loading = true;
+
+    setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.router.navigate(['pedidos-detalhe', {"refresh": (new Date().getTime())}], { queryParams: { idPedido: idPedido } });
+    }, 600);
   }
 
 }
